@@ -40,3 +40,20 @@ for i , result in enumerate(results):
     print()
     print()
     print(result)
+
+
+    # Zero shot prompting
+    # Few shot prompting
+    {
+        "hyderabad"
+    }
+    {
+        "number of places to visit ":"20"
+    }
+    ["Hussain sagar", "char minar", "ramoji film city","Golconda fort", "chamula palace"]
+
+    #Chain of thought prompting
+    
+
+    
+
