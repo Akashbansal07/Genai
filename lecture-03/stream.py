@@ -22,14 +22,11 @@ parser = StrOutputParser()
 
 chain = prompt | llm | parser
 
-response= chain.invoke({
+for chunk in chain.stream({
     "area": "physics",
     "topic":"reflection"
-})
+}):
+    print(chunk, end="", flush=True)
 
-response = chain.invoke({
-    "area":"python",
-    "topic":"dictionary"
-})
 
-print(response)
+
