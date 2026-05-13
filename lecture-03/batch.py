@@ -22,15 +22,21 @@ parser = StrOutputParser()
 
 chain = prompt | llm | parser
 
-response= chain.invoke({
-    "area": "physics",
-    "topic":"reflection"
-})
 
-response1 = chain.invoke({
-    "area":"python",
-    "topic":"dictionary"
-})
+topics=[
+    {"area":"physics", "topic":"reflection"},
+    {"area":"python", "topic":"dictionary"},
+    {"area":"javascipt", "topic":"callback"},
+    {"area":"maths", "topic":"acute angle"},
+]
 
 
-print(response1)
+print("=======batch processing=====")
+
+results = chain.batch(topics)
+
+for i , result in enumerate(results):
+    print(f"\n--------Topic {i+1} ------")
+    print()
+    print()
+    print(result)
