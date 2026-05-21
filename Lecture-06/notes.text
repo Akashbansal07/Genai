@@ -1,0 +1,49 @@
+Pre-training :
+GPT trains on 500 billion words
+Cost : millions of dollar
+Time: months or may years
+Result: base model
+
+Fine-tunning:
+We train further on our specific data
+cost: hundreds of dollars
+Time: hours
+Result : new model wirth waits
+
+
+Fine tunning data example:
+{
+    "messages":[
+        {"role": "teacher", "You have question in reflection"},
+        {"role":"student","I want to know about ray daigram"},
+        {"role": "teacher", "daigram(image), instrcution"},
+    ]
+}
+
+Change because of fine tunning:
+writing style,
+Output format,
+tone and persona,
+Domain specific phrasing,
+response lenght
+
+fine tune can not  do:
+access real time data 
+
+
+what is RAG
+
+
+without RAG :
+user question ->llm reply(it can be wrong)
+
+with RAG:
+user question->search data related to question from knowledge base(data that we provide)
+->Inject that data in to the prompt->llm answer
+
+step1: try better prompt.
+          80% of problem solved by Better prompting.
+step2: you need answer about any specific data ->
+         if yes than we RAG, not fine tunning
+step3:Output format or style of response ->
+         if yes than Fine tunning 
