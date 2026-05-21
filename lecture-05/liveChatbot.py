@@ -45,44 +45,43 @@ chain_with_memory = RunnableWithMessageHistory(
 
 
 
-session_1= {"configurable":{"session_id":"Tourist_a"}}
+def run_chatbot():
+    print("\n" + "="*50)
+    print("Travel advisor chatbot")
+    print("Type 'quit' to exit | type 'history' to see all message")
+    print("="*50 + "\n")
+
+    session_config= {"configurable": {"session_id": "live_session"}}
+
+    while True:
+        user_input = input("You: ").strip()
+
+        if not user_input:
+            continue
+
+        if user_input.lower() in ["quit", "exit"]:
+            print("Goodbye!")
+            break
+
+        if user_input.lower() == "history":
+            history = store.get("live_session")
+            if history:
+                print(f"\n Conversation history----------")
+                for msg in history.messages:
+                    role = "You" if msg.type == "human" else "GPT"
+                    print(f"{role}:{msg.content[:80]}...")
+                print()
+            continue
 
 
-response= chain_with_memory.invoke(
-    {"user_input": "Tell me place to visit in himachal pardesh"},
-    config= session_1
-)
+        print("GPT:", end="",flush=True)
+        for chunk in chain_with_memory.stream(
+            {"user_input": user_input},
+            config=session_config
+        ):
+            print(chunk, end="", flush=True)
+        print()
+        print()
 
-print(f"user: Tell me place to visit in himachal pardesh ")
-print(f"GPT: {response}")
-print()
-
-
-response = chain_with_memory.invoke(
-    {"user_input":"Can you tell me about only one place in detail"},
-    config=session_1
-)
-
-print(f"user: Can you tell me about only one place in detail ")
-print(f"GPT: {response}")
-print()
-
-
-response = chain_with_memory.invoke(
-    {"user_input":"Can you tell me about only one place in detail"},
-    config=session_1
-)
-
-print(f"user: How far is this from delhi!!")
-print(f"GPT: {response}")
-print()
-
-
-
-history =  store["Tourist_a"]
-print(f"Message in history:{len(history.messages)}")
-for msg in history.messages:
-    role = "User" if msg.type == "human" else "GPT"
-    print(f"{role}:{msg.content[:60]}...")
-
-
+if __name__ == "__main__":
+    run_chatbot()
