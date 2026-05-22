@@ -32,3 +32,34 @@ range: -1 to 1
 +1= identical meaning
 0= unrealted to each 
 -1= opposite meaning
+
+
+
+
+
+
+faq_chunks = [
+    "To cancel your subscription, go to Settings and click Cancel Plan.",
+    "You can terminate your membership at any time from your account page.",
+    "Refunds are processed within 5-7 business days after cancellation.",
+    "Our premium plan includes unlimited API calls and priority support.",
+    "To reset your password, click Forgot Password on the login page.",
+    "Contact our support team at support@company.com for billing issues.",
+    "Stop your recurring payment by visiting the billing section.",
+    "New users get a 30-day free trial with no credit card required.",
+]
+
+
+Without embeddings — keyword search:
+  User asks: "How do I cancel my subscription?"
+  Search for: documents containing "cancel" AND "subscription"
+  Misses: "How to end my plan", "terminate membership",
+          "stop recurring payment" — same meaning, different words
+
+With embeddings — semantic search:
+  User asks: "How do I cancel my subscription?"
+  Embed the question → [0.23, -0.81, ...]
+  Embed all documents → [[...], [...], ...]
+  Find documents whose vectors are closest to question vector
+  Finds: "terminate membership", "stop recurring payment"
+         — because they are close in meaning-space

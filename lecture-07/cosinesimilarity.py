@@ -7,15 +7,7 @@ load_dotenv()
 
 embedder = OpenAIEmbeddings(model="text-embedding-3-large")
 
-def cosine(vec_a: list, vec_b:list) -> float:
-    a = np.array(vec_a)
-    b= np.array(vec_b)
 
-    dot_product = np.dot(a, b)
-    magnitude_a = np.linalg.norm(a)
-    magnitude_b = np.linalg.norm(b)
-
-    return dot_product / (magnitude_a * magnitude_b)
 
 
 sentences =[
