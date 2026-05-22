@@ -1,0 +1,34 @@
+RAG Pipelines
+Embeddings - [vectore/ list of number]
+Vector databases - to store the Embeddings
+Chunking - splitting documents for retrival
+Full Pipelines
+Advance RAG topic 
+Evaluate a  RAG system
+
+
+king        [1 ,2]
+happy      [5,6]
+prince     [1,1]
+queen [2,1]
+sad       [6,7]
+depressed    [7,7]
+car               [2,5]
+truck           [2,6]
+
+
+Text                   →    Embedding (vector)
+"I love Python"        →    [0.23, -0.81, 0.44, 0.12, ...]
+"Python is great"      →    [0.21, -0.79, 0.41, 0.15, ...]
+"I hate traffic"       →    [-0.54, 0.33, -0.21, 0.87, ...]
+
+
+Consine similarity
+between two vector
+range: -1 to 1 
+
+
+
++1= identical meaning
+0= unrealted to each 
+-1= opposite meaning
